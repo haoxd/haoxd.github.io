@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>深入理解java HashMap | 指间之力改变世界</title>
+  <title>指间之力改变世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基础1.hashmap是实现map接口的实现类，是线程非安全的，所以效率大于hashtable 2.hashmap默认有4个构造方法     2.1 HashMap()          构造一个具有默认初始容量 (16) 和默认加载因子 (0.75) 的空 HashMap。      2.2 HashMap(int initialCapacity)          构造一个带指定初始容量和默认">
+  <meta name="description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解java HashMap">
-<meta property="og:url" content="http://yoursite.com/2017/06/29/first/index.html">
+<meta property="og:title" content="指间之力改变世界">
+<meta property="og:url" content="http://yoursite.com/2017/06/30/jquery/index.html">
 <meta property="og:site_name" content="指间之力改变世界">
-<meta property="og:description" content="基础1.hashmap是实现map接口的实现类，是线程非安全的，所以效率大于hashtable 2.hashmap默认有4个构造方法     2.1 HashMap()          构造一个具有默认初始容量 (16) 和默认加载因子 (0.75) 的空 HashMap。      2.2 HashMap(int initialCapacity)          构造一个带指定初始容量和默认">
-<meta property="og:updated_time" content="2017-06-29T09:34:36.970Z">
+<meta property="og:description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
+<meta property="og:updated_time" content="2017-06-30T15:09:17.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解java HashMap">
-<meta name="twitter:description" content="基础1.hashmap是实现map接口的实现类，是线程非安全的，所以效率大于hashtable 2.hashmap默认有4个构造方法     2.1 HashMap()          构造一个具有默认初始容量 (16) 和默认加载因子 (0.75) 的空 HashMap。      2.2 HashMap(int initialCapacity)          构造一个带指定初始容量和默认">
+<meta name="twitter:title" content="指间之力改变世界">
+<meta name="twitter:description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
   
     <link rel="alternative" href="/atom.xml" title="指间之力改变世界" type="application/atom+xml">
   
@@ -139,41 +139,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-first" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-jquery" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      深入理解java HashMap
-    </h1>
-  
-
-        
-        <a href="/2017/06/29/first/" class="archive-article-date">
-  	<time datetime="2017-06-29T06:51:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><pre><code>1.hashmap是实现map接口的实现类，是线程非安全的，所以效率大于hashtable
-2.hashmap默认有4个构造方法
-    2.1 HashMap() 
-        构造一个具有默认初始容量 (16) 和默认加载因子 (0.75) 的空 HashMap。 
-    2.2 HashMap(int initialCapacity) 
-        构造一个带指定初始容量和默认加载因子 (0.75) 的空 HashMap。
-    2.3 HashMap(int initialCapacity, float loadFactor) 
-        构造一个带指定初始容量和加载因子的空 HashMap。 
-    2.4 HashMap(Map&lt;? extends K,? extends V&gt; m) 
-         构造一个映射关系与指定 Map 相同的新 HashMap。 
-</code></pre><h2 id="深入"><a href="#深入" class="headerlink" title="深入"></a>深入</h2><h3 id="理解hashmap的桶数量和加载因子"><a href="#理解hashmap的桶数量和加载因子" class="headerlink" title="理解hashmap的桶数量和加载因子"></a>理解hashmap的桶数量和加载因子</h3><pre><code>1. 默认桶数量是16个，加载因子 是0.75，所以当达到hashmap容量容积16*0.75=12时，hashmap则重新进行构造数据结构变为32个桶
-2. 相对准确的估算数据量，将极大的影响HashMap的性能，因为resize是一个重新分配的过程，耗时应该是里面最大的。
-3. 加载因子越大,填满的元素越多,空间利用率高了，则查找的成本越高.
-4. 加载因子越小,填满的元素越少,好处是:冲突的机会减小了,但:空间浪费多了，但查找变快了
-</code></pre>
+        <hr>
+<p>title:jquery小函数用法</p>
+<h2 id="tags-jQuery"><a href="#tags-jQuery" class="headerlink" title="tags:jQuery"></a>tags:jQuery</h2><p>##用法<br>     1 通过id获取 input的value的值<br>&gt;<br>        var staffId = $(“#staffId”).val();</p>
+<pre><code>2 确认checkbox的是否被选中 id ：为input的框的id
+</code></pre><p>&gt;<br>        if ($(“#remenberStaffId”).get(0).checked) {<br>                        alert（选中）；<br>                    } else {<br>                        Alert（没选中）；}</p>
+<pre><code>3 通过获取id 将input 设置为不可编辑
+</code></pre><p>&gt;<br>       $(“#staffId”).attr(“disabled”, “disabled”)// 将input元素设置为disabled</p>
+<pre><code>4  将不可编辑的input设置为可以编辑 通过id
+</code></pre><p>&gt;<br>       $(“#staffId”).removeAttr(“disabled”);</p>
+<pre><code>5 通过id给div中间填充内容
+</code></pre><p>&gt;<br>        $(“#queryPhoneCode”).html(“获取”);</p>
+<pre><code>6 通过input框的id 给value 填充值
+</code></pre><blockquote>
+<pre><code>$(&quot;#userId&quot;).val(userInfo.map.acctId);
+</code></pre></blockquote>
+<pre><code>7 通过id给&lt;span&gt;标签填充内容
+</code></pre><blockquote>
+<pre><code>$(&quot;#productName&quot;).html(userInfo.map.productName);
+</code></pre></blockquote>
+<pre><code>8 通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
+</code></pre><blockquote>
+<pre><code>$(&quot;#flowPacks&quot;).append(li);
+</code></pre></blockquote>
+
       
 
       
@@ -252,7 +246,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/29/first/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/30/jquery/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -266,18 +260,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/30/jquery/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/06/29/first/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解java HashMap</div>
       <i class="icon-circle-right"></i>
     </a>
   

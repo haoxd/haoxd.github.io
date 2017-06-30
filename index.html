@@ -137,6 +137,61 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:jquery小函数用法</p>
+<h2 id="tags-jQuery"><a href="#tags-jQuery" class="headerlink" title="tags:jQuery"></a>tags:jQuery</h2><p>##用法<br>     1 通过id获取 input的value的值<br>&gt;<br>        var staffId = $(“#staffId”).val();</p>
+<pre><code>2 确认checkbox的是否被选中 id ：为input的框的id
+</code></pre><p>&gt;<br>        if ($(“#remenberStaffId”).get(0).checked) {<br>                        alert（选中）；<br>                    } else {<br>                        Alert（没选中）；}</p>
+<pre><code>3 通过获取id 将input 设置为不可编辑
+</code></pre><p>&gt;<br>       $(“#staffId”).attr(“disabled”, “disabled”)// 将input元素设置为disabled</p>
+<pre><code>4  将不可编辑的input设置为可以编辑 通过id
+</code></pre><p>&gt;<br>       $(“#staffId”).removeAttr(“disabled”);</p>
+<pre><code>5 通过id给div中间填充内容
+</code></pre><p>&gt;<br>        $(“#queryPhoneCode”).html(“获取”);</p>
+<pre><code>6 通过input框的id 给value 填充值
+</code></pre><blockquote>
+<pre><code>$(&quot;#userId&quot;).val(userInfo.map.acctId);
+</code></pre></blockquote>
+<pre><code>7 通过id给&lt;span&gt;标签填充内容
+</code></pre><blockquote>
+<pre><code>$(&quot;#productName&quot;).html(userInfo.map.productName);
+</code></pre></blockquote>
+<pre><code>8 通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
+</code></pre><blockquote>
+<pre><code>$(&quot;#flowPacks&quot;).append(li);
+</code></pre></blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/30/jquery/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
