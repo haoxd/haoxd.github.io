@@ -165,7 +165,61 @@
 </code></pre><blockquote>
 <pre><code>$(&quot;#flowPacks&quot;).append(li);
 </code></pre></blockquote>
-
+<pre><code>9.通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
+</code></pre><p>&gt;<br>    $(“#flowPacks”).append(li);</p>
+<pre><code>10.通过获取当前选择的区域 寻找你要的节点设置为不可点击
+</code></pre><p>&gt;<br>       $(this).parent().parent().parent().parent().find(“select”).removeAttr(“disabled”);</p>
+<pre><code>11.通过id获取div 或者span当中的text文本
+</code></pre><blockquote>
+<pre><code>var psptAddr = $(&quot;#address&quot;).text();
+</code></pre></blockquote>
+<pre><code>12.通过获取select的id值 将他下拉的option的val等于01 的选择框设置为选中
+</code></pre><blockquote>
+<pre><code>$(&quot;#Tariffmodel&quot;).val(&quot;01&quot;);
+</code></pre></blockquote>
+<pre><code>13.通过获取相同部分id的标签获取当中的内容
+</code></pre><blockquote>
+<pre><code>$(&quot;[id^=&apos;preCostMoney&apos;]&quot;).each(function() {
+          var fee = $(this).text();
+          if (fee != &quot;&quot;)
+              costMoney += parseInt(fee, 10);
+      });
+</code></pre></blockquote>
+<pre><code>14.jquery input修改调用js函数
+</code></pre><p>&gt;<br>        $(“#preMoney”).change(function() {<br>                calcMoney();<br>            });</p>
+<pre><code>15.click事件保证唯一
+</code></pre><blockquote>
+<pre><code>   $(&apos;#sub&apos;).unbind(&apos;click&apos;).click(function () {
+...
+});
+</code></pre></blockquote>
+<pre><code>16.通过id删除div块当中的ul或者其他标签
+</code></pre><blockquote>
+<pre><code>$(&quot;#IntegralInfo&quot;).find(&quot;ul&quot;).remove();
+</code></pre></blockquote>
+<pre><code>17.jquery获取复选框（checkbox）的选中值（一组和单个）    
+</code></pre><p> 1 获取多个</p>
+<pre><code>var addProductArray=new Array(); //初始化可选包数组
+    $(&apos;input[name=&quot;choicePackages&quot;]:checked&apos;).each(function(){ 
+        addProductArray.push($(this).val());//向数组中添加元素 
+            }); 
+    alert(addProductArray);
+    var idstr=addProductArray.join(&apos;,&apos;);//将数组元素连接起来以构建一个字符串 
+</code></pre><p> 2 获取一个    </p>
+<pre><code>if($(&quot;#id&quot;).attr(&quot;checked&quot;)){//选中 
+        alert($(&quot;#id&quot;).val());//打印选中的值 
+            } 
+</code></pre><p>18 .设置select为不可编辑（可以查看但是不可修改） 加入这俩行代码<br>    onfocus=”this.defaultIndex=this.selectedIndex;” onchange=”this.selectedIndex=this.defaultIndex;”</p>
+<pre><code>19.jquery控制select下的option的显示和隐藏
+</code></pre><blockquote>
+</blockquote>
+<pre><code>if((eparchyCode==&quot;0472&quot; ){
+                            $(&quot;#cycleNum&quot;).children(&apos;option[value=&quot;1&quot;]&apos;).wrap(&apos;&lt;span&gt;&apos;).hide();                        
+                        }else{
+                            $(&quot;#cycleNum&quot;).children(&quot;span&quot;).children(&apos;option[value=&quot;1&quot;]&apos;).unwrap();
+                            $(&apos;#cycleNum option[value=&quot;1&quot;]&apos;).show();
+                        }
+</code></pre>
       
 
       
