@@ -148,17 +148,17 @@
 <p>导致HashMap线程不安全的根本原因是扩容。扩容就是在put加入元素的个数超过capacity * loadFactor的时候就会将内部Entry数组大小扩大至原来的2倍，然后将数组元素按照新的数组大小重新计算索引，放在新的数组中，同时修改每个节点的链表关系（主要是next和节点在链表中的位置）。<br>在扩容的过程中，每个线程会申请扩容后大小的新数组，移动完成后将新数组复制到Entry数组中。如果多个线程同时进行扩容，由于线程的执行顺序的不确定性，导致多个线程操作节点的next值会发生不确定的变化，造成数据丢失，或者形成循环链表等问题，导致线程不安全。下面来看下具体的代码和例子。</p>
 <p>###HashMap扩容代码 扩容整个流程如下，整个代码以JDK 1.7为例：</p>
 </blockquote>
-<p>&gt;<br>     1.put方法：判断key是否已经存在，如果已经存在则用value重新赋值，否则调用addEntry方法添加元素<br><img src="hashmap2/2a43000073a6db9bdc88.jpg" alt="hashmap,put方法"></p>
-<p>&gt;<br>     2.addEntry方法：判断数组大小是否需要扩容，如果需要则进行扩容调用resize方法<br><img src="hashmap2/2a46000015a67db8074c.jpg" alt="hashmap,put方法"></p>
+<p>&gt;<br>     1.put方法：判断key是否已经存在，如果已经存在则用value重新赋值，否则调用addEntry方法添加元素<br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a43000073a6db9bdc88.jpg" alt="hashmap2"></p>
+<p>&gt;<br>     2.addEntry方法：判断数组大小是否需要扩容，如果需要则进行扩容调用resize方法<br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a46000015a67db8074c.jpg" alt="hashmap2"></p>
 <p>&gt;<br>     3.resize方法：申请新的大小的Entry数组，调用transfer方法</p>
-<p><img src="hashmap2/2a400000699c46ecc963.jpg" alt="hashmap,put方法"></p>
+<p><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a400000699c46ecc963.jpg" alt="hashmap2"></p>
 <p><strong>resize方法：rehash方法一般为false（不需要重新计算hash值）。HashMap在JDK 1.7中的实现是数组+链表，所以移动节点过程是2层循环：第1层遍历所有的内部Entry数组table；第2层遍历table[i]下的每个节点。对每个节点的操作：<br>保存当前节点的next节点<br>计算当前节点在新数组中的索引<br>设置当前节点的next节点为新数组的头节点<br>设置新数组的头节点为当前节点（即当前节点为新的头节点，如果所有元素在新数组中的索引都相同，那么在新数组中的顺序和原数组的顺序相反）<br>将第1步中保存的next节点作为当前节点循环<br>线程安全的问题就在这5步中：第1步中保存的next节点，在执行到第5步的时候很有可能已经被其他线程修改，不是当前节点的next节点了，导致线程安全问题。</strong></p>
 <h2 id="HashMap多线程扩容流程"><a href="#HashMap多线程扩容流程" class="headerlink" title="HashMap多线程扩容流程"></a>HashMap多线程扩容流程</h2><p><strong>多线程执行的顺序决定于CPU调度，对于每个线程在任意语句都可能被挂起，待其他线程执行执行若干语句后再被调度。</strong></p>
 <ol>
-<li>假设线程1执行到Entry<k,v> next = e.next;语句就结束，这样线程1中的e指向key(0)，next指向key(4)，此时线程1挂起。<br><img src="hashmap2/2a3f00034037ff7a93cf.jpg" alt="hashmap,put方法"></k,v></li>
-<li>线程2调度完成所有节点的移动，结果如下图所示，和单线程扩容结果一致。注意，此时节点的位置和顺序已经发生了变化。<br><img src="hashmap2/2a3f00034038b90f7228.jpg" alt="hashmap,put方法"></li>
-<li>线程1继续执行，将e指向的key(0)节点放在table[0]的头节点。注意线程1的next仍然指向key(4)，虽然此时key(0)的next已经是null。<br><img src="hashmap2/2a3f0003403a28d0ec39.jpg" alt="hashmap,put方法"></li>
-<li><p>线程1的e指向了上一次循环的next，也就是key(4)，此时key(4)的next已经是key(0)。将key(4)插入到table[0]的头节点，并且将key(4)的next设置为key(0)。此时仍然没有问题。<br><img src="hashmap2/2a3f00034039d740fb8a.jpg" alt="hashmap,put方法"><br><strong>问题来了。线程1的e指向了上一次循环的next，也就是key(0)，next是null。将key(0)插入到table[0]的头节点，并且将key(0)的next设置为key(4)。此时循环链表正式成立，并且因为next是null，线程1的所有移动操作结束。</strong><br><img src="hashmap2/2a3a0004c333dfe61e68.jpg" alt="hashmap,put方法"><br><strong>问题已经比较明显，key(0)和key(4)形成了一个循环链表，同时线程1丢失了数据key(2)，会导致如下问题：</strong></p>
+<li>假设线程1执行到Entry<k,v> next = e.next;语句就结束，这样线程1中的e指向key(0)，next指向key(4)，此时线程1挂起。<br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a3f00034037ff7a93cf.jpg" alt="hashmap2"></k,v></li>
+<li>线程2调度完成所有节点的移动，结果如下图所示，和单线程扩容结果一致。注意，此时节点的位置和顺序已经发生了变化。<br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a3f00034038b90f7228.jpg" alt="hashmap2"></li>
+<li>线程1继续执行，将e指向的key(0)节点放在table[0]的头节点。注意线程1的next仍然指向key(4)，虽然此时key(0)的next已经是null。<br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a3f0003403a28d0ec39.jpg" alt="hashmap2"></li>
+<li><p>线程1的e指向了上一次循环的next，也就是key(4)，此时key(4)的next已经是key(0)。将key(4)插入到table[0]的头节点，并且将key(4)的next设置为key(0)。此时仍然没有问题。<br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a3f00034039d740fb8a.jpg" alt="hashmap2"><br><strong>问题来了。线程1的e指向了上一次循环的next，也就是key(0)，next是null。将key(0)插入到table[0]的头节点，并且将key(0)的next设置为key(4)。此时循环链表正式成立，并且因为next是null，线程1的所有移动操作结束。</strong><br><img src="https://raw.githubusercontent.com/haoxd/haoxd.github.io/master/2017/07/05/hashmap2/2a3a0004c333dfe61e68.jpg" alt="hashmap2"><br><strong>问题已经比较明显，key(0)和key(4)形成了一个循环链表，同时线程1丢失了数据key(2)，会导致如下问题：</strong></p>
 <ol>
 <li>get(2)会导致查不到数据</li>
 </ol>
