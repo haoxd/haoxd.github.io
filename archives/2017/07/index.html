@@ -6,18 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>指间之力改变世界</title>
+  <title>Archives: 2017/7 | 指间之力改变世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="指间之力改变世界">
-<meta property="og:url" content="http://yoursite.com/2017/06/30/jquery/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2017/07/index.html">
 <meta property="og:site_name" content="指间之力改变世界">
-<meta property="og:description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
-<meta property="og:updated_time" content="2017-07-03T02:51:18.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指间之力改变世界">
-<meta name="twitter:description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
   
     <link rel="alternative" href="/atom.xml" title="指间之力改变世界" type="application/atom+xml">
   
@@ -139,209 +135,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jquery" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-    <div class="article-entry" itemprop="articleBody">
+    
       
-        <hr>
-<p>title:jquery小函数用法</p>
-<h2 id="tags-jQuery"><a href="#tags-jQuery" class="headerlink" title="tags:jQuery"></a>tags:jQuery</h2><p>##用法<br>     1 通过id获取 input的value的值<br>&gt;<br>        var staffId = $(“#staffId”).val();</p>
-<pre><code>2 确认checkbox的是否被选中 id ：为input的框的id
-</code></pre><p>&gt;<br>        if ($(“#remenberStaffId”).get(0).checked) {<br>                        alert（选中）；<br>                    } else {<br>                        Alert（没选中）；}</p>
-<pre><code>3 通过获取id 将input 设置为不可编辑
-</code></pre><p>&gt;<br>       $(“#staffId”).attr(“disabled”, “disabled”)// 将input元素设置为disabled</p>
-<pre><code>4  将不可编辑的input设置为可以编辑 通过id
-</code></pre><p>&gt;<br>       $(“#staffId”).removeAttr(“disabled”);</p>
-<pre><code>5 通过id给div中间填充内容
-</code></pre><p>&gt;<br>        $(“#queryPhoneCode”).html(“获取”);</p>
-<pre><code>6 通过input框的id 给value 填充值
-</code></pre><blockquote>
-<pre><code>$(&quot;#userId&quot;).val(userInfo.map.acctId);
-</code></pre></blockquote>
-<pre><code>7 通过id给&lt;span&gt;标签填充内容
-</code></pre><blockquote>
-<pre><code>$(&quot;#productName&quot;).html(userInfo.map.productName);
-</code></pre></blockquote>
-<pre><code>8 通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
-</code></pre><blockquote>
-<pre><code>$(&quot;#flowPacks&quot;).append(li);
-</code></pre></blockquote>
-<pre><code>9.通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
-</code></pre><p>&gt;<br>    $(“#flowPacks”).append(li);</p>
-<pre><code>10.通过获取当前选择的区域 寻找你要的节点设置为不可点击
-</code></pre><p>&gt;<br>       $(this).parent().parent().parent().parent().find(“select”).removeAttr(“disabled”);</p>
-<pre><code>11.通过id获取div 或者span当中的text文本
-</code></pre><blockquote>
-<pre><code>var psptAddr = $(&quot;#address&quot;).text();
-</code></pre></blockquote>
-<pre><code>12.通过获取select的id值 将他下拉的option的val等于01 的选择框设置为选中
-</code></pre><blockquote>
-<pre><code>$(&quot;#Tariffmodel&quot;).val(&quot;01&quot;);
-</code></pre></blockquote>
-<pre><code>13.通过获取相同部分id的标签获取当中的内容
-</code></pre><blockquote>
-<pre><code>$(&quot;[id^=&apos;preCostMoney&apos;]&quot;).each(function() {
-          var fee = $(this).text();
-          if (fee != &quot;&quot;)
-              costMoney += parseInt(fee, 10);
-      });
-</code></pre></blockquote>
-<pre><code>14.jquery input修改调用js函数
-</code></pre><p>&gt;<br>        $(“#preMoney”).change(function() {<br>                calcMoney();<br>            });</p>
-<pre><code>15.click事件保证唯一
-</code></pre><blockquote>
-<pre><code>   $(&apos;#sub&apos;).unbind(&apos;click&apos;).click(function () {
-...
-});
-</code></pre></blockquote>
-<pre><code>16.通过id删除div块当中的ul或者其他标签
-</code></pre><blockquote>
-<pre><code>$(&quot;#IntegralInfo&quot;).find(&quot;ul&quot;).remove();
-</code></pre></blockquote>
-<pre><code>17.jquery获取复选框（checkbox）的选中值（一组和单个）    
-</code></pre><p> 1 获取多个</p>
-<pre><code>var addProductArray=new Array(); //初始化可选包数组
-    $(&apos;input[name=&quot;choicePackages&quot;]:checked&apos;).each(function(){ 
-        addProductArray.push($(this).val());//向数组中添加元素 
-            }); 
-    alert(addProductArray);
-    var idstr=addProductArray.join(&apos;,&apos;);//将数组元素连接起来以构建一个字符串 
-</code></pre><p> 2 获取一个    </p>
-<pre><code>if($(&quot;#id&quot;).attr(&quot;checked&quot;)){//选中 
-        alert($(&quot;#id&quot;).val());//打印选中的值 
-            } 
-</code></pre><p>18 .设置select为不可编辑（可以查看但是不可修改） 加入这俩行代码<br>    onfocus=”this.defaultIndex=this.selectedIndex;” onchange=”this.selectedIndex=this.defaultIndex;”</p>
-<pre><code>19.jquery控制select下的option的显示和隐藏
-</code></pre><blockquote>
-</blockquote>
-<pre><code>if((eparchyCode==&quot;0472&quot; ){
-                            $(&quot;#cycleNum&quot;).children(&apos;option[value=&quot;1&quot;]&apos;).wrap(&apos;&lt;span&gt;&apos;).hide();                        
-                        }else{
-                            $(&quot;#cycleNum&quot;).children(&quot;span&quot;).children(&apos;option[value=&quot;1&quot;]&apos;).unwrap();
-                            $(&apos;#cycleNum option[value=&quot;1&quot;]&apos;).show();
-                        }
-</code></pre>
       
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/05/hashmap2/" class="archive-article-date">
+  	<time datetime="2017-07-05T11:44:42.712Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
+</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+    	 
+        <div class="article-info info-on-right">
+          
+          
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/30/jquery/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/05/test/" class="archive-article-date">
+  	<time datetime="2017-07-05T11:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2017/07/05/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/06/29/first/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">深入理解java HashMap</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/05/test/">test</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
+    
 
 
           </div>
@@ -369,8 +226,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -8,16 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>指间之力改变世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
+  <meta name="description" content="title:JavaHashMap笔记之二：线程不安全原理date:2017-07-05 14:51:37 tags:javaHashMap线程不安全的根本原因-扩容 导致HashMap线程不安全的根本原因是扩容。扩容就是在put加入元素的个数超过capacity * loadFactor的时候就会将内部Entry数组大小扩大至原来的2倍，然后将数组元素按照新的数组大小重新计算索引，放在新的数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指间之力改变世界">
-<meta property="og:url" content="http://yoursite.com/2017/06/30/jquery/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/05/hashmap2/index.html">
 <meta property="og:site_name" content="指间之力改变世界">
-<meta property="og:description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
-<meta property="og:updated_time" content="2017-07-03T02:51:18.514Z">
+<meta property="og:description" content="title:JavaHashMap笔记之二：线程不安全原理date:2017-07-05 14:51:37 tags:javaHashMap线程不安全的根本原因-扩容 导致HashMap线程不安全的根本原因是扩容。扩容就是在put加入元素的个数超过capacity * loadFactor的时候就会将内部Entry数组大小扩大至原来的2倍，然后将数组元素按照新的数组大小重新计算索引，放在新的数组">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a43000073a6db9bdc88.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a46000015a67db8074c.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a400000699c46ecc963.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a3f00034037ff7a93cf.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a3f00034038b90f7228.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a3f0003403a28d0ec39.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a3f00034039d740fb8a.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a3a0004c333dfe61e68.jpg">
+<meta property="og:updated_time" content="2017-07-05T12:02:07.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指间之力改变世界">
-<meta name="twitter:description" content="title:jquery小函数用法 tags:jQuery##用法     1 通过id获取 input的value的值&amp;gt;        var staffId = $(“#staffId”).val(); 2 确认checkbox的是否被选中 id ：为input的框的id &amp;gt;        if ($(“#remenberStaffId”).get(0).checked) {">
+<meta name="twitter:description" content="title:JavaHashMap笔记之二：线程不安全原理date:2017-07-05 14:51:37 tags:javaHashMap线程不安全的根本原因-扩容 导致HashMap线程不安全的根本原因是扩容。扩容就是在put加入元素的个数超过capacity * loadFactor的时候就会将内部Entry数组大小扩大至原来的2倍，然后将数组元素按照新的数组大小重新计算索引，放在新的数组">
+<meta name="twitter:image" content="http://yoursite.com/2017/07/05/hashmap2/hashmap2/2a43000073a6db9bdc88.jpg">
   
     <link rel="alternative" href="/atom.xml" title="指间之力改变世界" type="application/atom+xml">
   
@@ -139,89 +148,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jquery" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-hashmap2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>title:jquery小函数用法</p>
-<h2 id="tags-jQuery"><a href="#tags-jQuery" class="headerlink" title="tags:jQuery"></a>tags:jQuery</h2><p>##用法<br>     1 通过id获取 input的value的值<br>&gt;<br>        var staffId = $(“#staffId”).val();</p>
-<pre><code>2 确认checkbox的是否被选中 id ：为input的框的id
-</code></pre><p>&gt;<br>        if ($(“#remenberStaffId”).get(0).checked) {<br>                        alert（选中）；<br>                    } else {<br>                        Alert（没选中）；}</p>
-<pre><code>3 通过获取id 将input 设置为不可编辑
-</code></pre><p>&gt;<br>       $(“#staffId”).attr(“disabled”, “disabled”)// 将input元素设置为disabled</p>
-<pre><code>4  将不可编辑的input设置为可以编辑 通过id
-</code></pre><p>&gt;<br>       $(“#staffId”).removeAttr(“disabled”);</p>
-<pre><code>5 通过id给div中间填充内容
-</code></pre><p>&gt;<br>        $(“#queryPhoneCode”).html(“获取”);</p>
-<pre><code>6 通过input框的id 给value 填充值
-</code></pre><blockquote>
-<pre><code>$(&quot;#userId&quot;).val(userInfo.map.acctId);
-</code></pre></blockquote>
-<pre><code>7 通过id给&lt;span&gt;标签填充内容
-</code></pre><blockquote>
-<pre><code>$(&quot;#productName&quot;).html(userInfo.map.productName);
-</code></pre></blockquote>
-<pre><code>8 通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
-</code></pre><blockquote>
-<pre><code>$(&quot;#flowPacks&quot;).append(li);
-</code></pre></blockquote>
-<pre><code>9.通过id 给某一标签当中填充内容 类似于stringBuff 的append 方法
-</code></pre><p>&gt;<br>    $(“#flowPacks”).append(li);</p>
-<pre><code>10.通过获取当前选择的区域 寻找你要的节点设置为不可点击
-</code></pre><p>&gt;<br>       $(this).parent().parent().parent().parent().find(“select”).removeAttr(“disabled”);</p>
-<pre><code>11.通过id获取div 或者span当中的text文本
-</code></pre><blockquote>
-<pre><code>var psptAddr = $(&quot;#address&quot;).text();
-</code></pre></blockquote>
-<pre><code>12.通过获取select的id值 将他下拉的option的val等于01 的选择框设置为选中
-</code></pre><blockquote>
-<pre><code>$(&quot;#Tariffmodel&quot;).val(&quot;01&quot;);
-</code></pre></blockquote>
-<pre><code>13.通过获取相同部分id的标签获取当中的内容
-</code></pre><blockquote>
-<pre><code>$(&quot;[id^=&apos;preCostMoney&apos;]&quot;).each(function() {
-          var fee = $(this).text();
-          if (fee != &quot;&quot;)
-              costMoney += parseInt(fee, 10);
-      });
-</code></pre></blockquote>
-<pre><code>14.jquery input修改调用js函数
-</code></pre><p>&gt;<br>        $(“#preMoney”).change(function() {<br>                calcMoney();<br>            });</p>
-<pre><code>15.click事件保证唯一
-</code></pre><blockquote>
-<pre><code>   $(&apos;#sub&apos;).unbind(&apos;click&apos;).click(function () {
-...
-});
-</code></pre></blockquote>
-<pre><code>16.通过id删除div块当中的ul或者其他标签
-</code></pre><blockquote>
-<pre><code>$(&quot;#IntegralInfo&quot;).find(&quot;ul&quot;).remove();
-</code></pre></blockquote>
-<pre><code>17.jquery获取复选框（checkbox）的选中值（一组和单个）    
-</code></pre><p> 1 获取多个</p>
-<pre><code>var addProductArray=new Array(); //初始化可选包数组
-    $(&apos;input[name=&quot;choicePackages&quot;]:checked&apos;).each(function(){ 
-        addProductArray.push($(this).val());//向数组中添加元素 
-            }); 
-    alert(addProductArray);
-    var idstr=addProductArray.join(&apos;,&apos;);//将数组元素连接起来以构建一个字符串 
-</code></pre><p> 2 获取一个    </p>
-<pre><code>if($(&quot;#id&quot;).attr(&quot;checked&quot;)){//选中 
-        alert($(&quot;#id&quot;).val());//打印选中的值 
-            } 
-</code></pre><p>18 .设置select为不可编辑（可以查看但是不可修改） 加入这俩行代码<br>    onfocus=”this.defaultIndex=this.selectedIndex;” onchange=”this.selectedIndex=this.defaultIndex;”</p>
-<pre><code>19.jquery控制select下的option的显示和隐藏
-</code></pre><blockquote>
+<p>title:JavaHashMap笔记之二：线程不安全原理<br>date:2017-07-05 14:51:37</p>
+<h2 id="tags-java"><a href="#tags-java" class="headerlink" title="tags:java"></a>tags:java</h2><h2 id="HashMap线程不安全的根本原因-扩容"><a href="#HashMap线程不安全的根本原因-扩容" class="headerlink" title="HashMap线程不安全的根本原因-扩容"></a>HashMap线程不安全的根本原因-扩容</h2><blockquote>
+<p>导致HashMap线程不安全的根本原因是扩容。扩容就是在put加入元素的个数超过capacity * loadFactor的时候就会将内部Entry数组大小扩大至原来的2倍，然后将数组元素按照新的数组大小重新计算索引，放在新的数组中，同时修改每个节点的链表关系（主要是next和节点在链表中的位置）。<br>在扩容的过程中，每个线程会申请扩容后大小的新数组，移动完成后将新数组复制到Entry数组中。如果多个线程同时进行扩容，由于线程的执行顺序的不确定性，导致多个线程操作节点的next值会发生不确定的变化，造成数据丢失，或者形成循环链表等问题，导致线程不安全。下面来看下具体的代码和例子。</p>
+<p>###HashMap扩容代码 扩容整个流程如下，整个代码以JDK 1.7为例：</p>
 </blockquote>
-<pre><code>if((eparchyCode==&quot;0472&quot; ){
-                            $(&quot;#cycleNum&quot;).children(&apos;option[value=&quot;1&quot;]&apos;).wrap(&apos;&lt;span&gt;&apos;).hide();                        
-                        }else{
-                            $(&quot;#cycleNum&quot;).children(&quot;span&quot;).children(&apos;option[value=&quot;1&quot;]&apos;).unwrap();
-                            $(&apos;#cycleNum option[value=&quot;1&quot;]&apos;).show();
-                        }
-</code></pre>
+<p>&gt;<br>     1.put方法：判断key是否已经存在，如果已经存在则用value重新赋值，否则调用addEntry方法添加元素<br><img src="hashmap2/2a43000073a6db9bdc88.jpg" alt="hashmap,put方法"></p>
+<p>&gt;<br>     2.addEntry方法：判断数组大小是否需要扩容，如果需要则进行扩容调用resize方法<br><img src="hashmap2/2a46000015a67db8074c.jpg" alt="hashmap,put方法"></p>
+<p>&gt;<br>     3.resize方法：申请新的大小的Entry数组，调用transfer方法</p>
+<p><img src="hashmap2/2a400000699c46ecc963.jpg" alt="hashmap,put方法"></p>
+<p><strong>resize方法：rehash方法一般为false（不需要重新计算hash值）。HashMap在JDK 1.7中的实现是数组+链表，所以移动节点过程是2层循环：第1层遍历所有的内部Entry数组table；第2层遍历table[i]下的每个节点。对每个节点的操作：<br>保存当前节点的next节点<br>计算当前节点在新数组中的索引<br>设置当前节点的next节点为新数组的头节点<br>设置新数组的头节点为当前节点（即当前节点为新的头节点，如果所有元素在新数组中的索引都相同，那么在新数组中的顺序和原数组的顺序相反）<br>将第1步中保存的next节点作为当前节点循环<br>线程安全的问题就在这5步中：第1步中保存的next节点，在执行到第5步的时候很有可能已经被其他线程修改，不是当前节点的next节点了，导致线程安全问题。</strong></p>
+<h2 id="HashMap多线程扩容流程"><a href="#HashMap多线程扩容流程" class="headerlink" title="HashMap多线程扩容流程"></a>HashMap多线程扩容流程</h2><p><strong>多线程执行的顺序决定于CPU调度，对于每个线程在任意语句都可能被挂起，待其他线程执行执行若干语句后再被调度。</strong></p>
+<ol>
+<li>假设线程1执行到Entry<k,v> next = e.next;语句就结束，这样线程1中的e指向key(0)，next指向key(4)，此时线程1挂起。<br><img src="hashmap2/2a3f00034037ff7a93cf.jpg" alt="hashmap,put方法"></k,v></li>
+<li>线程2调度完成所有节点的移动，结果如下图所示，和单线程扩容结果一致。注意，此时节点的位置和顺序已经发生了变化。<br><img src="hashmap2/2a3f00034038b90f7228.jpg" alt="hashmap,put方法"></li>
+<li>线程1继续执行，将e指向的key(0)节点放在table[0]的头节点。注意线程1的next仍然指向key(4)，虽然此时key(0)的next已经是null。<br><img src="hashmap2/2a3f0003403a28d0ec39.jpg" alt="hashmap,put方法"></li>
+<li><p>线程1的e指向了上一次循环的next，也就是key(4)，此时key(4)的next已经是key(0)。将key(4)插入到table[0]的头节点，并且将key(4)的next设置为key(0)。此时仍然没有问题。<br><img src="hashmap2/2a3f00034039d740fb8a.jpg" alt="hashmap,put方法"><br><strong>问题来了。线程1的e指向了上一次循环的next，也就是key(0)，next是null。将key(0)插入到table[0]的头节点，并且将key(0)的next设置为key(4)。此时循环链表正式成立，并且因为next是null，线程1的所有移动操作结束。</strong><br><img src="hashmap2/2a3a0004c333dfe61e68.jpg" alt="hashmap,put方法"><br><strong>问题已经比较明显，key(0)和key(4)形成了一个循环链表，同时线程1丢失了数据key(2)，会导致如下问题：</strong></p>
+<ol>
+<li>get(2)会导致查不到数据</li>
+</ol>
+</li>
+</ol>
+<pre><code>2. get(8)进入死循环，因为hash(8) = 8 % 4 = 0，index(8) = 0 &amp; 3 = 0，查找会进入到table[0]的链表中从而形成死循环
+</code></pre><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><strong>HashMap线程不安全的原因是多个线程可以同时操作同一个数据源，它并不是问题，而是JDK实现就设计如此，所以如果多线程环境需要使用HashMap可以使用ConcurrentHashMap，虽然HashTable也是线程安全的，但是因为HashTable在读写过程中都加入锁，所以性能会受到较大影响。</strong></p>
+
       
 
       
@@ -300,7 +256,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/30/jquery/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/05/hashmap2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +270,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/07/05/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/29/first/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">深入理解java HashMap</div>
+    <a href="/2017/07/05/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">test</div>
       <i class="icon-circle-right"></i>
     </a>
   
